@@ -1,0 +1,25 @@
+{
+    "name": "phpsaga/symfony-bundle",
+    "description": "Symfony integration for PhpSaga",
+    "require": {
+        "php": "^8.1",
+        "phpsaga/phpsaga": "dev-main",
+        "symfony/http-kernel": "^6.0|^7.0",
+        "symfony/dependency-injection": "^6.0|^7.0",
+        "symfony/config": "^6.0|^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "PhpSaga\\Symfony\\": "src/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../v1-php-core"
+        }
+    ]
+}

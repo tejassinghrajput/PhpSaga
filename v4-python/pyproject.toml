@@ -1,0 +1,18 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "phpsaga"
+version = "4.0.0"
+description = "A port of PhpSaga to Python with sync and async support."
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+django = ["django>=4.0"]
+fastapi = ["fastapi>=0.100", "starlette>=0.27"]
+dev = ["pytest>=7", "pytest-asyncio>=0.21", "mypy>=1.0", "httpx>=0.24"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"

@@ -1,0 +1,26 @@
+<?php
+
+namespace {{ namespace }};
+
+use PhpSaga\Step;
+use PhpSaga\Laravel\Facades\Saga;
+use PhpSaga\TransactionResult;
+
+class {{ class }} {
+    public function execute(): TransactionResult {
+        return Saga::run([
+            Step::make(fn() => $this->doSomething(), 'step1')
+                ->rollback(fn() => $this->undoSomething()),
+
+            // Add more steps here
+        ]);
+    }
+
+    protected function doSomething() {
+        // Implementation
+    }
+
+    protected function undoSomething() {
+        // Implementation
+    }
+}
