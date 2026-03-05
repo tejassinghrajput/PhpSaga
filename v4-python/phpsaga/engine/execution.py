@@ -26,12 +26,12 @@ class ExecutionEngine:
         self.logger = logger
 
     async def execute(self, steps: list[Step]) -> None:
-        for step in steps: # SEQUENTIAL — not asyncio.gather()
+        for index, step in enumerate(steps): # SEQUENTIAL — not asyncio.gather()
             try:
                 result = await _call(step.action)
-                self.tracker.mark_completed(step.name, result)
-                self.logger.log('STEP_COMPLETED', step.name)
+                self.tracker.mark_completed(index, step.name, result)
+                self.logger.log('STEP_COMPLETED', step.name, {'index': index})
             except Exception as e:
-                self.tracker.mark_failed(step.name, e)
-                self.logger.log('STEP_FAILED', step.name, {'error': str(e)})
+                self.tracker.mark_failed(index, step.name, e)
+                self.logger.log('STEP_FAILED', step.name, {'index': index, 'error': str(e)})
                 raise # stop execution

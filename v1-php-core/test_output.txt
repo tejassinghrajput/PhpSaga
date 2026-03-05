@@ -1,0 +1,9 @@
+PHPUnit 10.5.63 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.3.6
+
+......                                                              6 / 6 (100%)
+
+Time: 00:00.721, Memory: 8.00 MB
+
+OK (6 tests, 18 assertions)

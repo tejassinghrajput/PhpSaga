@@ -1,0 +1,17 @@
+{
+  "name": "phpsaga",
+  "version": "3.0.0",
+  "description": "Node.js (TypeScript) port of PhpSaga",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "jest": "^29.0.0",
+    "ts-jest": "^29.0.0",
+    "@types/jest": "^29.0.0"
+  }
+}

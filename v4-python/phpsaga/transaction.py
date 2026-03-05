@@ -54,15 +54,14 @@ class Transaction:
                 failed_step = steps[len(completed)].name
 
             # Rollback in reverse order of completion
-            for step_name in reversed(completed):
-                # Find the step object by name
-                step = next(s for s in steps if s.name == step_name)
+            for index in reversed(completed):
+                step = steps[index]
                 if step.compensation:
                     try:
                         await _call(step.compensation)
-                        logger.log('COMPENSATION_COMPLETED', step.name)
+                        logger.log('COMPENSATION_COMPLETED', step.name, {'index': index})
                     except Exception as comp_error:
-                        logger.log('COMPENSATION_FAILED', step.name, {'error': str(comp_error)})
+                        logger.log('COMPENSATION_FAILED', step.name, {'index': index, 'error': str(comp_error)})
                         if step.strategy == RollbackStrategy.RAISE:
                             raise comp_error
 
